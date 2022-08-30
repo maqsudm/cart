@@ -42,4 +42,14 @@ class CheckoutServiceTest extends AnyFunSuite with BeforeAndAfter{
     assert(total.equals(BigDecimal(.85)))
   }
 
+  test("passing a basket with 3 Apples and 1 orange returns 205"){
+    val apple = new Apple
+    val apple1 = new Apple
+    val apple2 = new Apple
+    val orange = new Orange
+    val items = List(apple, apple1, orange, apple2)
+    val total = checkoutService.calculateBasketCost(items)
+    assert(total.equals(BigDecimal(2.05)))
+  }
+
 }
