@@ -9,9 +9,7 @@ class CheckoutService {
     if(basketItems.isEmpty) {
       total = BigDecimal(0)
     }
-    for(basketItem <- basketItems){
-      total += basketItem.getCost()
-    }
+    total = basketItems.map(_.getCost()).sum
     total
   }
 
