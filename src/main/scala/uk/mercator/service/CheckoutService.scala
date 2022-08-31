@@ -1,6 +1,6 @@
 package uk.mercator.service
 
-import uk.mercator.model.BasketProduct
+import uk.mercator.model.{Apple, BasketProduct, Orange}
 
 class CheckoutService {
 
@@ -8,8 +8,12 @@ class CheckoutService {
     var total:BigDecimal=BigDecimal(0)
     if(basketItems.isEmpty) {
       total = BigDecimal(0)
+    }else{
+      val apple = new Apple
+      val orange = new Orange
+      total = apple.calculateTotal(basketItems.count(bi => bi.isInstanceOf[Apple]))
+        .+(orange.calculateTotal(basketItems.count(bi => bi.isInstanceOf[Orange])))
     }
-    total = basketItems.map(_.getCost()).sum
     total
   }
 
