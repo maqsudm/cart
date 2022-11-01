@@ -27,8 +27,6 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: 'sbt'
-    - name: Cache
-      uses: actions/cache@v3.0.11
     - name: Official SonarQube Scan
       uses: SonarSource/sonarqube-scan-action@v1.1.0
     - name: Run tests
